@@ -1,0 +1,49 @@
+# Build info
+java:
+  build:
+    version: '@maven.compiler.release@'
+
+# Management
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,liveness,prometheus"
+      base-path: /monitor
+    endpoint:
+      health:
+        show-details: always
+      metrics:
+        enabled: true
+
+# Fail fast on encoding
+spring:
+  mandatory-file-encoding: UTF-8
+  main.banner-mode: 'off'
+  threads:
+    virtual:
+      enabled: true
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS}
+    consumer:
+      auto-offset-reset: latest
+      enable-auto-commit: false
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "com.mathisdulieu.ticketing.notification"
+        spring.json.value.default.type: "com.mathisdulieu.ticketing.notification.NotificationEvent"
+
+server:
+  shutdown: graceful
+
+notification:
+  kafka:
+    groupId: notification_service_group
+    topics:
+      - json_realtime_reservation_confirmed
+      - json_realtime_reservation_cancelled
+      - json_realtime_reservation_failed
+      - json_realtime_inventory_sold_out
+      - json_realtime_inventory_low_stock
+      - json_realtime_notification_send
