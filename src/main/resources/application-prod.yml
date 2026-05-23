@@ -14,3 +14,14 @@ logging:
     com.mathisdulieu.ticketing: INFO
   pattern:
     console: "%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ} [%thread] %-5level %logger{36} - %msg%n"
+
+notification:
+  kafka:
+    groupId: notification_service_group
+    topics:
+      - json_realtime_reservation_confirmed
+      - json_realtime_reservation_cancelled
+      - json_realtime_reservation_failed
+      - json_realtime_inventory_sold_out
+      - json_realtime_inventory_low_stock
+      - json_realtime_notification_send
