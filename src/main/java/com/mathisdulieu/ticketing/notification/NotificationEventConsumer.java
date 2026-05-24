@@ -13,10 +13,7 @@ public class NotificationEventConsumer {
 
     private final NotificationService notificationService;
 
-    @KafkaListener(
-            topics = "#{@kafkaProvider.getTopics()}",
-            groupId = "#{@kafkaProvider.getGroupId()}"
-    )
+    @KafkaListener(topics = "#{@kafkaProvider.getTopics()}", groupId = "#{@kafkaProvider.getGroupId()}")
     public void consume(final NotificationEvent notificationEvent, final Acknowledgment acknowledgment) {
         log.debug("Received Kafka event: eventId={}", notificationEvent.eventId());
 

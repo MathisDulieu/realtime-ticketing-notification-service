@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class NotificationService {
 
-    public void doSomething(NotificationEvent notificationEvent) {
+    public void doSomething(final NotificationEvent notificationEvent) {
         log.info("I did something with eventId: {} ", notificationEvent.eventId());
     }
 
