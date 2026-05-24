@@ -14,14 +14,3 @@ logging:
     com.mathisdulieu.ticketing: DEBUG
   pattern:
     console: "%clr(%d{yyyy-MM-dd HH:mm:ss}){faint} %clr([%thread]){blue} %clr(%-5level){green} %clr(%logger{36}){cyan} - %msg%n"
-
-# Realtime
-notification:
-  kafka:
-    groupId: notification_service_group_local
-    topics:
-      - json_realtime_reservation_confirmed_local
-      - json_realtime_reservation_cancelled_local
-      - json_realtime_reservation_failed_local
-      - json_realtime_inventory_updated_local
-      - json_realtime_inventory_sold_out_local

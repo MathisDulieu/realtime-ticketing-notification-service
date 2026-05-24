@@ -36,3 +36,14 @@ spring:
 
 server:
   shutdown: graceful
+
+notification:
+  kafka:
+    groupId: notification_service_group
+    topics:
+      - json_realtime_reservation_confirmed
+      - json_realtime_reservation_cancelled
+      - json_realtime_reservation_failed
+      - json_realtime_inventory_sold_out
+      - json_realtime_inventory_low_stock
+      - json_realtime_notification_send
