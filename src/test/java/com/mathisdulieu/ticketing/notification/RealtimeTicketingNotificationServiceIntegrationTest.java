@@ -35,7 +35,7 @@ public class RealtimeTicketingNotificationServiceIntegrationTest {
         NotificationEvent notificationEvent = NotificationEvent.builder()
             .eventId("event-id")
             .build();
-
+        
         // Act
         kafkaTemplate.send("test-topic-1", "key", notificationEvent);
 
